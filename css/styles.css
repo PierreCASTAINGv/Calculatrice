@@ -1,0 +1,34 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    height: 100%;
+    font-size: 1.125em;
+    font-family: 'Asap', sans-serif;
+}
+#container {
+    margin: 60px auto 0;
+    padding: 15px;
+    width: 306px;
+    background: rgb(71, 70, 70);
+}
+#result {
+    font-size: 1.5em;
+    border: 2px solid black;
+    width: 287px;
+    height: 50px;
+    padding: 0 0 0 10px;
+}
+article {
+    color: white;
+    cursor: pointer;
+    margin: 2px 0 0;
+    display: inline-block;
+    border: 1px solid black;
+    width: 70px;
+    height: 50px;
+    text-align: center;
+    padding: 20px 0 0;
+    background:rgb(51, 51, 51);
+}
