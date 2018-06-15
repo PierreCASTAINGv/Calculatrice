@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>Document</title>
+    <title>Calculatrice</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -30,42 +30,36 @@
         <article>CE</article>
         <article>/</article>
     </div>
- <script>
+<script>
 
+var ecran = document.getElementById('result');
 
- var ecran = document.getElementById('result');
-
- function enter() {
+function enter() {
         var val = this.textContent;
-        ajout = ecran.value += val;
+        var ajout = ecran.value += val;
         console.log(ajout);
         }
-
- function erase() {
-    ecran.value = "";
- } 
  
- function resultat() {
-    
+function resultat() {
     var egal = ecran.value;
-    var searchM = egal.match(/\*/);
-    var searchD = egal.match(/\//);
-    var searchS = egal.match(/\-/);
-    var searchA = egal.match(/\+/);
+    var searchM = egal.match('*');
+    var searchD = egal.match('/');
+    var searchS = egal.match('-');
+    var searchA = egal.match('+');
     if (searchM) {
         res = egal.split(/[-+*/]/);
         var total = res[0] * res[1];
         ecran.value = total;
     } else if (searchD) {
-        res = egal.split(/[-+*/]/);
+        res = egal.split('/');
         var total = res[0] / res[1];
         ecran.value = total;
     } else if (searchS) {
-        res = egal.split(/[-+*/]/);
+        res = egal.split('-');
         var total = res[0] - res[1];
         ecran.value = total;
     } else if (searchA) {
-        res = egal.split(/[-+*/]/);
+        res = egal.split('+');
         arg1 = parseInt(res[0]);
         arg2 = parseInt(res[1]);
         var total = arg1 + arg2;
@@ -73,31 +67,45 @@
     }
  }
 
- document.getElementsByTagName('article')[0].addEventListener('click', enter);
- document.getElementsByTagName('article')[1].addEventListener('click', enter);
- document.getElementsByTagName('article')[2].addEventListener('click', enter);
- document.getElementsByTagName('article')[3].addEventListener('click', enter);
- document.getElementsByTagName('article')[4].addEventListener('click', enter);
- document.getElementsByTagName('article')[5].addEventListener('click', enter);
- document.getElementsByTagName('article')[6].addEventListener('click', enter);
- document.getElementsByTagName('article')[7].addEventListener('click', enter);
- document.getElementsByTagName('article')[8].addEventListener('click', enter);
- document.getElementsByTagName('article')[9].addEventListener('click', enter);
- document.getElementsByTagName('article')[10].addEventListener('click', enter);
- document.getElementsByTagName('article')[11].addEventListener('click', enter);
- document.getElementsByTagName('article')[12].addEventListener('click', resultat);
- document.getElementsByTagName('article')[13].addEventListener('click', enter);
- document.getElementsByTagName('article')[14].addEventListener('click', erase);
- document.getElementsByTagName('article')[15].addEventListener('click', enter);
+ function erase() {
+    ecran.value = "";
+ }
+
+//   Code: saisie au clavier :
+
+window.addEventListener('keydown', calc, false) 
+
+    function calc(event) {
+    
+        if (event.keyCode >= 48 && event.keyCode <= 57 || event.keyCode == 191 || event.keyCode == 220 || event.keyCode == 187) {
+        var val = this.event.key;
+        var ajout = ecran.value += val;
+        }
+        else if (event.keyCode == 13) {  // touche : retour/entrer
+        resultat();
+        }
+        else if (event.keyCode == 69) {  // touche : e 
+        erase();
+        }
+    }
 
 
-//  var tab = document.getElementsByTagName('article');
-//  var i;
-//  var content = ''
-//  for (i in tab) {
-//      content += tab[i].textContent + '-';
-// alert(content);
-//  }
- </script>   
+ //   Code: saisie à la souris :
+
+    var touche = document.getElementsByTagName('article');
+
+    for (let i in touche) {
+    if (touche[i].textContent == '=') {
+        document.getElementsByTagName('article')[i].addEventListener('click', resultat);   
+    }
+    else if (touche[i].textContent == 'CE') {
+        document.getElementsByTagName('article')[i].addEventListener('click', erase);
+    }
+    else {
+        document.getElementsByTagName('article')[i].addEventListener('click', enter);
+    }
+} 
+
+</script>   
 </body>
 </html>
