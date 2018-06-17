@@ -47,7 +47,7 @@ function resultat() {
     var searchS = egal.match('-');
     var searchA = egal.match('+');
     if (searchM) {
-        res = egal.split(/[-+*/]/);
+        res = egal.split('*');
         var total = res[0] * res[1];
         ecran.value = total;
     } else if (searchD) {
