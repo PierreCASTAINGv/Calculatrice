@@ -42,10 +42,10 @@ function enter() {
  
 function resultat() {
     var egal = ecran.value;
-    var searchM = egal.match('*');
-    var searchD = egal.match('/');
-    var searchS = egal.match('-');
-    var searchA = egal.match('+');
+   œvar searchM = egal.match(/\*/);
+    var searchD = egal.match(/\//);
+    var searchS = egal.match(/\-/);
+    var searchA = egal.match(/\+/);
     if (searchM) {
         res = egal.split('*');
         var total = res[0] * res[1];
