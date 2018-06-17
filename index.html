@@ -42,12 +42,12 @@ function enter() {
  
 function resultat() {
     var egal = ecran.value;
-    var searchM = egal.match(/\*/);
+    var searchM = egal.match(/\*/);  // on échappe les opérateurs dans la fonction match
     var searchD = egal.match(/\//);
     var searchS = egal.match(/\-/);
     var searchA = egal.match(/\+/);
     if (searchM) {
-        res = egal.split('*');
+        res = egal.split(/[-+*/]/); // on split sur - ou + ou * ou / - ici pas nécessaire mais pour se souvenir de cette possibilité
         var total = res[0] * res[1];
         ecran.value = total;
     } else if (searchD) {
@@ -71,7 +71,7 @@ function resultat() {
     ecran.value = "";
  }
 
-//   Code: saisie au clavier :
+//   opération saisie au clavier :
 
 window.addEventListener('keydown', calc, false) 
 
@@ -90,7 +90,7 @@ window.addEventListener('keydown', calc, false)
     }
 
 
- //   Code: saisie à la souris :
+ //   opération saisie à la souris :
 
     var touche = document.getElementsByTagName('article');
 
@@ -109,3 +109,4 @@ window.addEventListener('keydown', calc, false)
 </script>   
 </body>
 </html>
+
